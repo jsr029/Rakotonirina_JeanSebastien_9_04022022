@@ -1,0 +1,26 @@
+{
+  "name": "rakotonirina_jeansebastien_9_04022022",
+  "version": "1.0.0",
+  "description": "P9 debug and test an SaaS Rh",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsr029/Rakotonirina_JeanSebastien_9_04022022.git"
+  },
+  "keywords": [
+    "debug",
+    "test",
+    "e2e",
+    "saas",
+    "rh"
+  ],
+  "author": "jsr029",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsr029/Rakotonirina_JeanSebastien_9_04022022/issues"
+  },
+  "homepage": "https://github.com/jsr029/Rakotonirina_JeanSebastien_9_04022022#readme"
+}
