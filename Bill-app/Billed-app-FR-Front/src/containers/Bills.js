@@ -1,6 +1,7 @@
 import { ROUTES_PATH } from '../constants/routes.js'
 import { formatDate, formatStatus } from "../app/format.js"
 import Logout from "./Logout.js"
+import BillsUI from '../views/BillsUI.js'
 
 export default class {
   constructor({ document, onNavigate, store, localStorage }) {
@@ -52,6 +53,10 @@ export default class {
               }
             }
           })
+          //Show bills from the earliest to the latest
+          .sort((a,b) => b- a)
+          //Show Bills list without type = null
+          .filter(bill => bill.type != null)
           console.log('length', bills.length)
         return bills
       })
