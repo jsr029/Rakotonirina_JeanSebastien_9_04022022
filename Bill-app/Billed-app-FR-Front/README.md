@@ -1,94 +1,45 @@
+## Premier réflexe : erreur dans la console
 
-## L'architecture du projet :
-Ce projet, dit frontend, est connecté à un service API backend que vous devez aussi lancer en local.
+<div style="text-align:center">
+   <img src="./Bug1.JPG" alt="Bug dans la console"/>
+</div>
 
-Le projet backend se trouve ici: https://github.com/OpenClassrooms-Student-Center/Billed-app-FR-back
+Après enquête, 2 lignes causaient le bug qui empéchait de se loguer :
 
-## Organiser son espace de travail :
-Pour une bonne organization, vous pouvez créer un dossier bill-app dans lequel vous allez cloner le projet backend et par la suite, le projet frontend:
+     handleSubmitAdmin = e => {
+       e.preventDefault()
+       const user = {
+         type: "Admin",
+         /**Première Modif remplacer employee par admin */
+         email: e.target.querySelector(`input[data-testid="employee-email-input"]`).value,
+         password: e.target.querySelector(`input[data-testid="employee-password-input"]`).value,
+         status: "connected"
+       }
 
-Clonez le projet backend dans le dossier bill-app :
-```
-$ git clone https://github.com/OpenClassrooms-Student-Center/Billed-app-FR-Back.git
-```
+## Autre moyen de rechercher les bugs : le Test par Jest (taper npm run test dans le repertoire frontend)
 
-```
-bill-app/
-   - Billed-app-FR-Back
-```
+<div style=""text-align:center">
+  <img src="./TestJest1.JPG"/>
+</div>
+On peut de suite constater des erreurs dans l'expression de expect et du matcher. Sachant qu'il s'agit d'un order, toBeEqual n'est pas adéquat, on s'attendrait plus à un toBeLessThan ou toBeMoreThan. Mais toBeTruthy, c'est encore mieux. 
 
-Clonez le projet frontend dans le dossier bill-app :
-```
-$ git clone https://github.com/OpenClassrooms-Student-Center/Billed-app-FR-Front.git
-```
+L'expression 
+                            
+                            expect(dates).toEqual(datesSorted) 
+                            
+devient 
+                            
+                            expect(datesSorted).toBeTruthy()
 
-```
-bill-app/
-   - Billed-app-FR-Back
-   - Billed-app-FR-Front
-```
+## Coverage : http://127.0.0.1:8080/coverage/lcov-report/
+                           
+<div style="text-align:center">
+   <img src="coverage1.JPG"/>
+   <img src="coverage1containers1.JPG"/>
+</div>
 
-## Comment lancer l'application en local ?
+ 3 fichiers (Bills.js,Login.js et NewBill.js) nécessitent des investigations aussi bien dans le répertoire __containers__ que dans __tests__. Vérifier leur intégrité, la syntaxe, les exportations/importations, etc...
 
-### étape 1 - Lancer le backend :
-
-Suivez les indications dans le README du projet backend.
-
-### étape 2 - Lancer le frontend :
-
-Allez au repo cloné :
-```
-$ cd Billed-app-FR-Front
-```
-
-Installez les packages npm (décrits dans `package.json`) :
-```
-$ npm install
-```
-
-Installez live-server pour lancer un serveur local :
-```
-$ npm install -g live-server
-```
-
-Lancez l'application :
-```
-$ live-server
-```
-
-Puis allez à l'adresse : `http://127.0.0.1:8080/`
-
-
-## Comment lancer tous les tests en local avec Jest ?
-
-```
-$ npm run test
-```
-
-## Comment lancer un seul test ?
-
-Installez jest-cli :
-
-```
-$npm i -g jest-cli
-$jest src/__tests__/your_test_file.js
-```
-
-## Comment voir la couverture de test ?
-
-`http://127.0.0.1:8080/coverage/lcov-report/`
-
-## Comptes et utilisateurs :
-
-Vous pouvez vous connecter en utilisant les comptes:
-
-### administrateur : 
-```
-utilisateur : admin@test.tld 
-mot de passe : admin
-```
-### employé :
-```
-utilisateur : employee@test.tld
-mot de passe : employee
-```
+Il s'agit d'une première fois avec la structure React, et le framework Jest. Ce n'est pas évident, mais la curiosité est plus forte.
+                                      
+## Kanban : https://github.com/jsr029/Rakotonirina_JeanSebastien_9_04022022/blob/master/Bill-app/Billed-app-FR-Back/README.md
