@@ -4,7 +4,7 @@
 
 Le test Bills / les notes de frais s'affichent par ordre décroissant est passé au rouge.
 
-## Done : https://github.com/jsr029/Rakotonirina_JeanSebastien_P9_04022022/blob/master/Bill-app/Billed-app-FR-Front/src/__tests__/Bills.js line 38
+## Done : https://github.com/jsr029/Rakotonirina_JeanSebastien_9_04022022/blob/master/Bill-app/Billed-app-FR-Front/src/__tests__/Bills.js line 38
 
 Déja expliqué précédemment
 
@@ -14,7 +14,7 @@ Déja expliqué précédemment
 
 Dans le rapport de test "Login, si un administrateur remplit correctement les champs du Login, il devrait naviguer sur la page Dashboard", le test est passé au rouge (cf. copie d'écran).
 
-## Done : https://github.com/jsr029/Rakotonirina_JeanSebastien_P9_04022022/blob/master/Bill-app/Billed-app-FR-Front/containers/Login.js lines 45, 46
+## Done : https://github.com/jsr029/Rakotonirina_JeanSebastien_9_04022022/blob/master/Bill-app/Billed-app-FR-Front/containers/Login.js lines 45, 46
 
 Remplacer "employee" par "admin", déja expliqué précédemment.
 
@@ -24,7 +24,7 @@ Remplacer "employee" par "admin", déja expliqué précédemment.
 
 Je suis connecté en tant qu'administrateur RH, je déplie une liste de tickets (par exemple : statut "validé"), je sélectionne un ticket, puis je déplie une seconde liste (par exemple : statut "refusé"), je ne peux plus sélectionner un ticket de la première liste. 
 
-L'intervention se situe donc dans le fichier https://github.com/jsr029/Rakotonirina_JeanSebastien_P9_04022022/blob/master/Bill-app/Billed-app-FR-Front/src/containers/Dashboard.js 
+L'intervention se situe donc dans le fichier https://github.com/jsr029/Rakotonirina_JeanSebastien_9_04022022/blob/master/Bill-app/Billed-app-FR-Front/src/containers/Dashboard.js 
 L'idée est de faire en sorte que lorsqu'on déplie une liste les 2 autres dropdown se ferment. ce qui donne :
 
       switch(this.index){
@@ -68,7 +68,7 @@ Le rapport de couverture de branche de Jest indique que le fichiers suivants ne 
 Respecter la structure des tests unitaires en place : Given  / When / Then avec le résultat attendu. Un exemple est donné dans le squelette du test __tests__/Bills.js
 
 # 1. Composant view/Bills
-https://github.com/jsr029/Rakotonirina_JeanSebastien_P9_04022022/blob/master/Bill-app/Billed-app-FR-Front/src/__tests__/Bills.js lines 29, 30
+https://github.com/jsr029/Rakotonirina_JeanSebastien_9_04022022/blob/master/Bill-app/Billed-app-FR-Front/src/__tests__/Bills.js lines 29, 30
 
       //to-do write expect expression
       expect(windowIcon).toBeTruthy()
