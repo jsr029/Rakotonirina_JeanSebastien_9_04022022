@@ -1,4 +1,4 @@
-# Rakotonirina_JeanSebastien_P9_04022022
+# Rakotonirina_JeanSebastien_9_04022022
 Développeur React/Js 
 
 ## OpenClassrooms P9 : Débugger et tester un SaaS RH
@@ -106,4 +106,4 @@ Dans certains cas, on écrit d'abord les tests avant de coder, même s'ils sont 
         expect(...).toBeTruthy(), attendu que cela soit vrai
         
 ## Projet 9 
-cliquer ici : https://github.com/jsr029/Rakotonirina_JeanSebastien_P9_04022022/blob/master/Bill-app/Billed-app-FR-Front/README.md
+cliquer ici : https://github.com/jsr029/Rakotonirina_JeanSebastien_9_04022022/blob/master/Bill-app/Billed-app-FR-Front/README.md
