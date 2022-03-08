@@ -3,7 +3,7 @@ import { formatDate, formatStatus } from "../app/format.js"
 import Logout from "./Logout.js"
 import BillsUI from '../views/BillsUI.js'
 
-export default class {
+export default class Bills{
   constructor({ document, onNavigate, store, localStorage }) {
     this.document = document
     this.onNavigate = onNavigate
@@ -21,10 +21,10 @@ export default class {
     this.onNavigate(ROUTES_PATH['NewBill'])
   }
 
-  handleClickIconEye = (icon) => {
-    const billUrl = icon.getAttribute("data-bill-url")
-    const imgWidth = Math.floor($('#modaleFile').width() * 0.5)
-    $('#modaleFile').find(".modal-body").html(`<div style='text-align: center;' class="bill-proof-container"><img width=${imgWidth} src=${billUrl} alt="Bill" /></div>`)
+  handleClickIconEye = icon => {
+    const billUrl = icon.getAttribute("data-bill-url");
+    const imgWidth = Math.floor($('#modaleFile').width() * 0.5);
+    $('#modaleFile').find(".modal-body").html(`<div style="text-align: center;" class="bill-proof-container"><img width="${imgWidth}" src="${billUrl}" alt="Bill" /></div>`)
     $('#modaleFile').modal('show')
   }
 
@@ -54,10 +54,10 @@ export default class {
             }
           })
           //Show bills from the earliest to the latest
-          .sort((a,b) => b- a)
+          .sort((a, b) => (a.date < b.date ? 1 : -1))
           //Show Bills list without type = null
-          .filter(bill => bill.type != null)
-          console.log('length', bills.length)
+          .filter(bill => bill.type != null);
+          console.log('length', bills.length);
         return bills
       })
     }

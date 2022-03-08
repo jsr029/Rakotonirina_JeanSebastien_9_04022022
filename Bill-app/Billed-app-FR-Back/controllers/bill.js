@@ -91,8 +91,8 @@ const list = async (req, res) => {
   if (!user) return res.status(401).send({ message: 'user must be authenticated' });
   try {
     const bills = user.type === 'Admin'
-      ? await Bill.findAll({ order: [['date', 'DESC']] })
-      : await Bill.findAll({ where: { email: user.email }, order: [['date', 'DESC']] });
+      ? await Bill.findAll()
+      : await Bill.findAll({ where: { email: user.email } });
     return res.json(
       bills.map(
         ({
