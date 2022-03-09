@@ -52,7 +52,7 @@ export default class {
               }
             }
           })
-          .sort((a, b) => b - a)
+          .sort((a, b) => b.date < a.date ? 1 : -1)
           .filter(e => e.type != null)
           console.log('length', bills.length)
         return bills
