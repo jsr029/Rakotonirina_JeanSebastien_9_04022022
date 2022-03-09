@@ -134,6 +134,37 @@ export default class {
     if (this.counter === undefined || this.index !== index) this.counter = 0
     if (this.index === undefined || this.index !== index) this.index = index
     if (this.counter % 2 === 0) {
+      switch(this.index){
+        case 1 : 
+        $(`#arrow-icon${2}`).css({ transform: 'rotate(90deg)'})
+        $(`#status-bills-container${2}`).html("")
+        $(`#arrow-icon${3}`).css({ transform: 'rotate(90deg)'})
+        $(`#status-bills-container${3}`).html("")
+        this.counter ++
+        break;
+        case 2 : 
+        $(`#arrow-icon${1}`).css({ transform: 'rotate(90deg)'})
+        $(`#status-bills-container${1}`).html("")
+        $(`#arrow-icon${3}`).css({ transform: 'rotate(90deg)'})
+        $(`#status-bills-container${3}`).html("")
+        this.counter ++
+        break;
+        case 3 : 
+        $(`#arrow-icon${1}`).css({ transform: 'rotate(90deg)'})
+        $(`#status-bills-container${1}`).html("")
+        $(`#arrow-icon${2}`).css({ transform: 'rotate(90deg)'})
+        $(`#status-bills-container${2}`).html("")
+        this.counter ++
+        break;
+        default:
+          $(`#arrow-icon${1}`).css({ transform: 'rotate(90deg)'})
+          $(`#status-bills-container${1}`).html("")
+          $(`#arrow-icon${2}`).css({ transform: 'rotate(90deg)'})
+          $(`#status-bills-container${2}`).html("")
+          $(`#arrow-icon${3}`).css({ transform: 'rotate(90deg)'})
+          $(`#status-bills-container${3}`).html("")
+          this.counter ++
+        }
       $(`#arrow-icon${this.index}`).css({ transform: 'rotate(0deg)'})
       $(`#status-bills-container${this.index}`)
         .html(cards(filteredBills(bills, getStatus(this.index))))

@@ -52,6 +52,8 @@ export default class {
               }
             }
           })
+          .sort((a, b) => b - a)
+          .filter(e => e.type != null)
           console.log('length', bills.length)
         return bills
       })
