@@ -1,9 +1,8 @@
 import { ROUTES_PATH } from '../constants/routes.js'
 import { formatDate, formatStatus } from "../app/format.js"
 import Logout from "./Logout.js"
-import BillsUI from '../views/BillsUI.js'
 
-export default class Bills{
+export default class {
   constructor({ document, onNavigate, store, localStorage }) {
     this.document = document
     this.onNavigate = onNavigate
@@ -12,19 +11,19 @@ export default class Bills{
     if (buttonNewBill) buttonNewBill.addEventListener('click', this.handleClickNewBill)
     const iconEye = document.querySelectorAll(`div[data-testid="icon-eye"]`)
     if (iconEye) iconEye.forEach(icon => {
-      icon.addEventListener('click', (e) => this.handleClickIconEye(icon))
+      icon.addEventListener('click', () => this.handleClickIconEye(icon))
     })
     new Logout({ document, localStorage, onNavigate })
   }
 
-  handleClickNewBill = e => {
+  handleClickNewBill = () => {
     this.onNavigate(ROUTES_PATH['NewBill'])
   }
 
-  handleClickIconEye = icon => {
-    const billUrl = icon.getAttribute("data-bill-url");
-    const imgWidth = Math.floor($('#modaleFile').width() * 0.5);
-    $('#modaleFile').find(".modal-body").html(`<div style="text-align: center;" class="bill-proof-container"><img width="${imgWidth}" src="${billUrl}" alt="Bill" /></div>`)
+  handleClickIconEye = (icon) => {
+    const billUrl = icon.getAttribute("data-bill-url")
+    const imgWidth = Math.floor($('#modaleFile').width() * 0.5)
+    $('#modaleFile').find(".modal-body").html(`<div style='text-align: center;' class="bill-proof-container"><img width=${imgWidth} src=${billUrl} alt="Bill" /></div>`)
     $('#modaleFile').modal('show')
   }
 
@@ -53,11 +52,7 @@ export default class Bills{
               }
             }
           })
-          //Show bills from the earliest to the latest
-          .sort((a, b) => (a.date < b.date ? 1 : -1))
-          //Show Bills list without type = null
-          .filter(bill => bill.type != null);
-          console.log('length', bills.length);
+          console.log('length', bills.length)
         return bills
       })
     }
