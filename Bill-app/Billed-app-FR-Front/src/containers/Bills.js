@@ -11,16 +11,16 @@ export default class {
     if (buttonNewBill) buttonNewBill.addEventListener('click', this.handleClickNewBill)
     const iconEye = document.querySelectorAll(`div[data-testid="icon-eye"]`)
     if (iconEye) iconEye.forEach(icon => {
-      icon.addEventListener('click', () => this.handleClickIconEye(icon))
+      icon.addEventListener('click', (e) => this.handleClickIconEye(icon))
     })
     new Logout({ document, localStorage, onNavigate })
   }
 
-  handleClickNewBill = () => {
+  handleClickNewBill = e => {
     this.onNavigate(ROUTES_PATH['NewBill'])
   }
 
-  handleClickIconEye = (icon) => {
+  handleClickIconEye = icon => {
     const billUrl = icon.getAttribute("data-bill-url")
     const imgWidth = Math.floor($('#modaleFile').width() * 0.5)
     $('#modaleFile').find(".modal-body").html(`<div style='text-align: center;' class="bill-proof-container"><img width=${imgWidth} src=${billUrl} alt="Bill" /></div>`)
@@ -52,7 +52,7 @@ export default class {
               }
             }
           })
-          .sort((a, b) => b.date < a.date ? 1 : -1)
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
           .filter(e => e.type != null)
           console.log('length', bills.length)
         return bills
