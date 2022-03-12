@@ -6,11 +6,32 @@ import {screen, waitFor, fireEvent} from "@testing-library/dom"
 import Bills from "../containers/Bills.js";
 import BillsUI from "../views/BillsUI.js"
 import { bills } from "../fixtures/bills.js"
-import { ROUTES_PATH} from "../constants/routes.js";
-import {localStorageMock} from "../__mocks__/localStorage.js";
-import {mockstore} from "../__mocks__/store"
-import {Store} from '../app/Store';
+import { ROUTES, ROUTES_PATH} from "../constants/routes.js";
+import { localStorageMock } from "../__mocks__/localStorage.js";
+import { mockstore } from "../__mocks__/store"
 import router from "../app/Router.js";
+
+// LocalStorage - Employee
+Object.defineProperty(window, "localStorage", {
+  value: localStorageMock,
+});
+window.localStorage.setItem(
+  "user",
+  JSON.stringify({
+    type: "Employee",
+  })
+);
+
+
+const pathname = ROUTES_PATH["Bills"];
+
+// Init onNavigate
+const onNavigate = (pathname) => {
+  document.body.innerHTML = ROUTES({
+    pathname
+  });
+};
+
 
 describe("Given I am connected as an employee", () => {
   describe("When I am on Bills Page", () => {
@@ -59,18 +80,15 @@ describe("Given I am connected as an employee", () => {
     test("Then the click new bill handler should be called", async () => {
         // build user interface
         const html = BillsUI({
-          data: []
+          data: bills
         });
         document.body.innerHTML = html;
-
-        // Init mockstore
-        const mockstore = null;
 
         // Init Bills
         const allBills = new Bills({
           document,
           onNavigate,
-          mockstore,
+          mockstore: null,
           localStorage: window.localStorage,
         });
 
@@ -83,8 +101,8 @@ describe("Given I am connected as an employee", () => {
         billBtn.addEventListener('click', handleClickNewBill);
         fireEvent.click(billBtn);
 
-        // screen should show Nouvelle note de frais
-        expect(screen.getAllByText('Nouvelle note de frais')).toBeTruthy();
+        // screen should show Envoyer une note de frais
+        expect(screen.getAllByText('Envoyer une note de frais')).toBeTruthy();
     })
   })
   describe("And I click on the eye icon", () => {
