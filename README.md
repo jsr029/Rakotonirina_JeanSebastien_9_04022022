@@ -21,7 +21,7 @@ Exemple :
         player = new Player();
         song = new Song();
       });
-      //Spécification, 2 arguments et function callback
+      //Spécification, 2 arguments : 1 string et 1 function callback
       it("should be able to play a Song", function() {
         player.play(song);
         expect(player.currentlyPlayingSong).toEqual(song);
