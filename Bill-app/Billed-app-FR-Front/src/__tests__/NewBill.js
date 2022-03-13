@@ -37,7 +37,7 @@ describe("Given I am connected as an employee", () => {
       const form = document.querySelector("form")
       expect(form.length).toEqual(9)
     })
-    describe("And I upload a image file", () => {
+    describe("And I upload an image file", () => {
       test("Then the file handler should show a file", () => {
         document.body.innerHTML = NewBillUI()
         const newBill = new NewBill({
