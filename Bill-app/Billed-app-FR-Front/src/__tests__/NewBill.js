@@ -95,7 +95,7 @@ describe("Given I am connected as an employee", () => {
         const submit = screen.getByTestId('form-new-bill')
         const forBillValid = {
           expenseType: "Transports",
-          expenseName: "forBillValid",
+          expenseName: "Vol Paris Londres",
           datePicker: "2022-12-31",
           amount: 100,
           vat: "70",
