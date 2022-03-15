@@ -156,10 +156,10 @@ describe("Given I am connected as an employee", () => {
   })
 })
 // test d'intégration GET
-describe("Given I am a user connected as Admin", () => {
+describe("Given I am a user connected as Employee", () => {
   describe("When I navigate to Bills", () => {
     test("fetches bills from mock API GET", async () => {
-      localStorage.setItem("user", JSON.stringify({ type: "Admin", email: "a@a" }));
+      localStorage.setItem("user", JSON.stringify({ type: "Employee", email: "a@a" }));
       const root = document.createElement("div")
       root.setAttribute("id", "root")
       document.body.append(root)
@@ -177,7 +177,7 @@ describe("Given I am a user connected as Admin", () => {
           { value: localStorageMock }
       )
       window.localStorage.setItem('user', JSON.stringify({
-        type: 'Admin',
+        type: 'Employee',
         email: "a@a"
       }))
       const root = document.createElement("div")
@@ -195,6 +195,8 @@ describe("Given I am a user connected as Admin", () => {
         }})
       window.onNavigate(ROUTES_PATH.Bills)
       await new Promise(process.nextTick);
+      console.log('MockStore : ', mockStore)
+      console.log('Bills from MockStore : ', bills)
       const message = await screen.getByText(/Erreur 404/)
       expect(message).toBeTruthy()
     })
