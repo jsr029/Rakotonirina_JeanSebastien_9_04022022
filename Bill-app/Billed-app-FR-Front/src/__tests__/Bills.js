@@ -169,8 +169,6 @@ describe("Given I am a user connected as Employee", () => {
       document.body.append(root)
       router()
       window.onNavigate(ROUTES_PATH.Bills)
-      //const errorMessage = document.querySelector(".content-title")
-      //expect(!errorMessage.innerHTML.includes('Erreur')).toBeTruthy()
       /* écoute la méthode get sur le mockStore*/
       const getSpy = jest.spyOn(getBillsMocked, "get")
       /* appelle la méthode get du store */
@@ -181,23 +179,6 @@ describe("Given I am a user connected as Employee", () => {
       expect(bills.data.length).toBe(4)
     })
     describe("When an error occurs on API", () => {
-      beforeEach(() => {
-        jest.spyOn(mockStore, "bills")
-        Object.defineProperty(
-          window,
-          'localStorage', {
-            value: localStorageMock
-          }
-        )
-        window.localStorage.setItem('user', JSON.stringify({
-          type: 'Employee',
-          email: "a@a"
-        }))
-        const root = document.createElement("div")
-        root.setAttribute("id", "root")
-        document.body.appendChild(root)
-        router()
-      })
       test("fetches bills from an API and fails with 404 message error", async () => {
         getBillsMocked.get.mockImplementationOnce(() =>
           Promise.reject(new Error("Erreur 404"))
