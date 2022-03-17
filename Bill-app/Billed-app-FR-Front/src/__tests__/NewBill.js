@@ -11,6 +11,7 @@ import {
 } from "../../setup-jest"
 import NewBillUI from "../views/NewBillUI.js"
 import NewBill from "../containers/NewBill.js"
+import BillsUI from "../views/BillsUI"
 import store from "../app/store.js"
 import getBillsMocked from "../__mocks__/getBillsMocked"
 
@@ -151,5 +152,37 @@ describe('Given I am connected as an employee', () => {
       // The number of bills must be 5 
       expect(bills.data.length).toBe(5);
     });
+    test('Add bill to API and fails with 404 message error', async () => {
+      getBillsMocked.post.mockImplementationOnce(() =>
+        Promise.reject(new Error('Erreur 404'))
+      );
+
+      // build user interface
+      const html = BillsUI({
+        error: 'Erreur 404'
+      });
+      document.body.innerHTML = html;
+
+      const message = await screen.getByText(/Erreur 404/);
+      // wait for the 404 error message
+      expect(message).toBeTruthy();
+    });
+
+    test('Add bill to API and fails with 500 message error', async () => {
+      getBillsMocked.post.mockImplementationOnce(() =>
+        Promise.reject(new Error('Erreur 404'))
+      );
+
+      // build user interface
+      const html = BillsUI({
+        error: 'Erreur 500'
+      });
+      document.body.innerHTML = html;
+
+      const message = await screen.getByText(/Erreur 500/);
+      // wait for the 500 error message
+      expect(message).toBeTruthy();
+    });
+
   })
 });
