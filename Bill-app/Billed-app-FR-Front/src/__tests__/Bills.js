@@ -160,15 +160,6 @@ describe("Given I am connected as an employee", () => {
 describe("Given I am a user connected as Employee", () => {
   describe("When I navigate to Bills", () => {
     test("fetches bills from mock API GET", async () => {
-      localStorage.setItem("user", JSON.stringify({
-        type: "Employee",
-        email: "a@a"
-      }));
-      const root = document.createElement("div")
-      root.setAttribute("id", "root")
-      document.body.append(root)
-      router()
-      window.onNavigate(ROUTES_PATH.Bills)
       /* écoute la méthode get sur le mockStore*/
       const getSpy = jest.spyOn(getBillsMocked, "get")
       /* appelle la méthode get du store */
