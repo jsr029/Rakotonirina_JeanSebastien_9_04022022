@@ -12,6 +12,7 @@ import {
 import NewBillUI from "../views/NewBillUI.js"
 import NewBill from "../containers/NewBill.js"
 import store from "../app/store.js"
+import getBillsMocked from "../__mocks__/getBillsMocked"
 
 // Setup
 const onNavigate = () => {
@@ -121,3 +122,34 @@ describe("Given I am connected as an employee", () => {
     })
   })
 })
+//Test d'intégration Post
+describe('Given I am connected as an employee', () => {
+  describe('When I create a new bill', () => {
+    test('Add bill to mock API POST', async () => {
+      const getSpyPost = jest.spyOn(getBillsMocked, 'post');
+
+      // Init newBill
+      const newBill = {
+        "id": "qcCK3SzECmaZAGRrHjaC",
+        "status": "refused",
+        "pct": 20,
+        "amount": 200,
+        "email": "a@a",
+        "name": "test2",
+        "vat": "40",
+        "fileName": "preview-facture-free-201801-pdf-1.jpg",
+        "date": "2002-02-02",
+        "commentAdmin": "pas la bonne facture",
+        "commentary": "test2",
+        "type": "Restaurants et bars",
+        "fileUrl": "https://test.storage.tld/v0/b/billable-677b6.a…f-1.jpg?alt=media&token=4df6ed2c-12c8-42a2-b013-346c1346f732"
+      };
+      const bills = await getBillsMocked.post(newBill);
+
+      // getSpyPost must have been called once
+      expect(getSpyPost).toHaveBeenCalledTimes(1);
+      // The number of bills must be 5 
+      expect(bills.data.length).toBe(5);
+    });
+  })
+});

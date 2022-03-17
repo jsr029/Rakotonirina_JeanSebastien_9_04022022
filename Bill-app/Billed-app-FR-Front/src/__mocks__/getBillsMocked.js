@@ -1,3 +1,4 @@
+import  getBillsMocked from './getBillsMocked'
 export default {
     get: () => {
         return Promise.resolve({
