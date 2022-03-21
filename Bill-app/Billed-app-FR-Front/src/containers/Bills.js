@@ -52,9 +52,9 @@ export default class {
               }
             }
           })
+          .filter(e => e.type !== null || e.name !=null)
           console.log('length', bills.length)
           bills.sort((a, b) => a.date < b.date ? 1 : -1)
-          bills.filter(e => e.type != null)
           for(let i=0; i < bills.length; i++){
             bills[i].date = formatDate(bills[i].date);
           }
