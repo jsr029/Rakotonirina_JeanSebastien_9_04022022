@@ -38,7 +38,7 @@ export default class {
             try {
               return {
                 ...doc,
-                date: formatDate(doc.date),
+                date: doc.date,
                 status: formatStatus(doc.status)
               }
             } catch(e) {
@@ -52,9 +52,12 @@ export default class {
               }
             }
           })
-          .sort((a, b) => new Date(b.date) - new Date(a.date))
-          .filter(e => e.type != null)
           console.log('length', bills.length)
+          bills.sort((a, b) => a.date < b.date ? 1 : -1)
+          bills.filter(e => e.type != null)
+          for(let i=0; i < bills.length; i++){
+            bills[i].date = formatDate(bills[i].date);
+          }
         return bills
       })
     }
