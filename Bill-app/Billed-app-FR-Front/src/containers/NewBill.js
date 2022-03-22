@@ -29,11 +29,12 @@ export default class NewBill {
     const colHalfChoosen = this.document.querySelector(`input[data-testid="file"]`);
     const boldLabelChoosen = colHalfChoosen.parentNode.querySelector('.bold-label');
     const blueBorder = colHalfChoosen.parentNode.querySelector('.blue-border');
+    const btnSendBill = this.document.querySelector('.btn-send-bill');
     if(['jpg', 'jpeg', 'png'].includes(fileExt)){
       e.preventDefault();
       colHalfChoosen.parentNode.style.border = 'none';
       boldLabelChoosen.innerHTML = '<p style="color:black;">Justificatif</p>'
-
+      btnSendBill.disabled = false;
       this.store
         .bills()
         .create({
@@ -52,6 +53,7 @@ export default class NewBill {
       e.preventDefault();
       colHalfChoosen.parentNode.style.border = '2px solid red';
       boldLabelChoosen.innerHTML = '<p style="color:red; font-weight:bold">Votre justificatif doit être une image (jpg, jpeg ou png)</p>'
+      btnSendBill.disabled = false;
     }
   }
   handleSubmit = e => {
